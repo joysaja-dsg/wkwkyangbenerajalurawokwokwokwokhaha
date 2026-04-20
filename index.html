@@ -22,7 +22,6 @@
       overflow-x: hidden;
     }
 
-    /* Video Background */
     .video-background {
       position: fixed;
       top: 0;
@@ -34,7 +33,7 @@
       filter: brightness(0.7) contrast(1.1) saturate(1.2);
     }
 
-    /* Overlay dinamis RGB: BIRU MUDA & PINK MUDA disatukan */
+    /* Overlay RGB: BIRU MUDA & PINK MUDA */
     .rgb-overlay {
       position: fixed;
       top: 0;
@@ -66,7 +65,6 @@
       z-index: 5;
     }
 
-    /* Navbar - efek kaca & neon RGB biru muda + pink muda */
     .navbar {
       grid-column: 2 / 12;
       position: sticky;
@@ -120,7 +118,7 @@
       text-shadow: 0 0 5px rgba(135,206,235,0.4);
     }
 
-    /* Tombol Musik (Play/Stop) dengan border RGB biru muda & pink muda */
+    /* Tombol Musik dengan border RGB */
     .music-toggle-btn {
       background: #ff4d6d;
       border: none;
@@ -139,7 +137,6 @@
       position: relative;
       overflow: hidden;
     }
-    /* efek neon border RGB (biru muda & pink muda) pada tombol */
     .music-toggle-btn::before {
       content: '';
       position: absolute;
@@ -229,7 +226,6 @@
       border: 1px solid rgba(173,216,230,0.5);
     }
 
-    /* AREA KONTEN DINAMIS */
     .hero-section {
       grid-column: 2 / 12;
       display: flex;
@@ -405,26 +401,6 @@
       text-shadow: 0 0 3px #89CFF0;
     }
 
-    .btn-get {
-      margin-top: 1rem;
-      padding: 14px 22px;
-      width: 100%;
-      border: none;
-      background: linear-gradient(95deg, #FFB6C1, #89CFF0);
-      color: white;
-      font-weight: bold;
-      font-size: 1rem;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: 0.2s;
-      font-family: 'Inter', sans-serif;
-      box-shadow: 0 4px 15px rgba(255,182,193,0.4);
-    }
-    .btn-get:hover {
-      transform: scale(0.98);
-      background: linear-gradient(95deg, #ffc0cb, #9acdff);
-    }
-
     .empty-state {
       color: #ffb3c6;
       background: rgba(30,31,40,0.8);
@@ -505,12 +481,10 @@
 </head>
 <body>
 
-<!-- VIDEO BACKGROUND -->
 <video class="video-background" autoplay loop muted playsinline>
   <source src="bg.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-<!-- Overlay RGB biru muda & pink muda -->
 <div class="rgb-overlay"></div>
 
 <div class="parent">
@@ -521,7 +495,6 @@
       </div>
       <div class="brand-text">JoyWardana</div>
     </div>
-    <!-- Tombol Play/Stop Music dengan border RGB biru muda pink muda -->
     <button id="musicToggleBtn" class="music-toggle-btn"><i class="fas fa-play"></i> Play Music</button>
     <div class="nav-menu">
       <button class="menu-item" data-menu="home"><i class="fas fa-home"></i> Home</button>
@@ -533,7 +506,6 @@
       <div class="status-badge"><i class="fas fa-circle" style="font-size: 0.6rem; color: #3aff8e; margin-right: 6px;"></i> Online</div>
     </div>
   </div>
-
   <div class="hero-section" id="dynamicContent"></div>
 </div>
 
@@ -555,25 +527,19 @@
     ]}
   ];
 
-  // ======================= MUSIC PLAYER (GITHUB REPO music.mp3) =======================
+  // ======================= MUSIC PLAYER (Local music.mp3 seperti bg.mp4) =======================
   let audio = null;
   let isMusicPlaying = false;
   const musicBtn = document.getElementById('musicToggleBtn');
-  
-  // Ganti URL ini dengan RAW URL file music.mp3 dari GitHub repo Anda
-  const MUSIC_URL = 'https://raw.githubusercontent.com/yourusername/yourrepo/main/music.mp3';
   
   function initMusic() {
     audio = new Audio();
     audio.loop = true;
     audio.volume = 0.5;
-    audio.src = MUSIC_URL;
+    audio.src = 'music.mp3'; // cukup detect music.mp3 di folder yang sama
     audio.load();
     audio.addEventListener('error', () => {
-      console.warn("Gagal memuat music.mp3 dari repo github, pastikan RAW URL benar. Menggunakan fallback sample.");
-      if (audio.src !== MUSIC_URL) return;
-      audio.src = 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3';
-      audio.load();
+      console.warn("File music.mp3 tidak ditemukan, pastikan file ada di folder yang sama dengan index.html");
     });
   }
   
@@ -585,7 +551,7 @@
       musicBtn.classList.remove('playing');
       musicBtn.innerHTML = '<i class="fas fa-play"></i> Play Music';
     } else {
-      audio.play().catch(e => console.log("Autoplay dicegah, klik ulang jika perlu"));
+      audio.play().catch(e => console.log("Autoplay dicegah, klik ulang jika diperlukan"));
       isMusicPlaying = true;
       musicBtn.classList.add('playing');
       musicBtn.innerHTML = '<i class="fas fa-stop"></i> Stop Music';
@@ -668,4 +634,32 @@
 
   function renderHome() {
     currentView = "home";
- 
+    contentDiv.innerHTML = `
+      <div class="hero-title">JoyWardana</div>
+      <div class="search-container">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" class="search-input" id="globalSearchInput" placeholder="Cari script..." autocomplete="off">
+        </div>
+      </div>
+      <div id="searchResultArea" style="width:100%;"></div>
+      <div class="hero-description">
+        <p>Tempat terbaik untuk menemukan script Roblox terbaru. Support PC & Mobile, update cepat, dan anti crash. Akses script Sailor Piece, Violence District, Delta Executor, dan lainnya.</p>
+      </div>
+    `;
+    const searchInput = document.getElementById("globalSearchInput");
+    const resultArea = document.getElementById("searchResultArea");
+    
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        performSearch(e.target.value, resultArea);
+      });
+      searchInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") {
+          performSearch(e.target.value, resultArea);
+        }
+      });
+    }
+    if (resultArea) resultArea.innerHTML = '';
+  }
+  
