@@ -34,23 +34,23 @@
       filter: brightness(0.7) contrast(1.1) saturate(1.2);
     }
 
-    /* Overlay dinamis RGB semi-transparan untuk memperkuat warna */
+    /* Overlay dinamis RGB: biru muda & pink muda */
     .rgb-overlay {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 30% 50%, rgba(255,0,100,0.15), rgba(0,255,200,0.1), rgba(100,0,255,0.2));
+      background: radial-gradient(circle at 30% 50%, rgba(173, 216, 230, 0.2), rgba(255, 182, 193, 0.15), rgba(135, 206, 250, 0.2));
       z-index: -1;
       pointer-events: none;
       animation: rgbShift 12s infinite alternate;
     }
 
     @keyframes rgbShift {
-      0% { background: radial-gradient(circle at 30% 50%, rgba(255,0,80,0.2), rgba(0,255,200,0.05), rgba(100,0,255,0.2)); }
-      50% { background: radial-gradient(circle at 70% 60%, rgba(0,255,150,0.2), rgba(255,100,0,0.1), rgba(150,0,255,0.2)); }
-      100% { background: radial-gradient(circle at 20% 80%, rgba(255,50,150,0.2), rgba(0,200,255,0.1), rgba(200,0,255,0.2)); }
+      0% { background: radial-gradient(circle at 30% 50%, rgba(173,216,230,0.25), rgba(255,182,193,0.1), rgba(135,206,250,0.2)); }
+      50% { background: radial-gradient(circle at 70% 60%, rgba(255,182,193,0.25), rgba(173,216,230,0.15), rgba(255,105,180,0.1)); }
+      100% { background: radial-gradient(circle at 20% 80%, rgba(135,206,250,0.3), rgba(255,182,193,0.2), rgba(173,216,230,0.25)); }
     }
 
     .parent {
@@ -66,7 +66,7 @@
       z-index: 5;
     }
 
-    /* Navbar - dengan efek kaca & neon RGB */
+    /* Navbar - efek kaca & neon RGB biru muda + pink muda */
     .navbar {
       grid-column: 2 / 12;
       position: sticky;
@@ -80,7 +80,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.5rem 1.5rem;
-      border: 1px solid rgba(0, 255, 255, 0.4);
+      border: 1px solid rgba(173, 216, 230, 0.6);
       transition: all 0.2s ease;
       flex-wrap: wrap;
     }
@@ -113,11 +113,56 @@
       font-weight: 700;
       font-size: 1.3rem;
       letter-spacing: -0.3px;
-      background: linear-gradient(135deg, #ff4d6d, #3b82f6, #a855f7);
+      background: linear-gradient(135deg, #89CFF0, #FFB6C1, #87CEEB);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      text-shadow: 0 0 5px rgba(255,77,109,0.3);
+      text-shadow: 0 0 5px rgba(135,206,235,0.4);
+    }
+
+    /* Tombol Musik (Play/Stop) dengan border RGB biru muda & pink muda */
+    .music-toggle-btn {
+      background: #ff4d6d;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      box-shadow: 0 0 8px rgba(173,216,230,0.5);
+      border: 1px solid transparent;
+    }
+    .music-toggle-btn.playing {
+      background: #2ecc71;
+      box-shadow: 0 0 12px rgba(46,204,113,0.6);
+      border: 1px solid rgba(255,182,193,0.8);
+    }
+    .music-toggle-btn:active {
+      transform: scale(0.96);
+    }
+    /* efek neon border RGB (biru muda & pink muda) pada tombol */
+    .music-toggle-btn {
+      position: relative;
+      overflow: hidden;
+    }
+    .music-toggle-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50px;
+      padding: 2px;
+      background: linear-gradient(125deg, #89CFF0, #FFB6C1, #87CEEB);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.7;
     }
 
     .nav-menu {
@@ -156,15 +201,15 @@
 
     .menu-item:hover {
       color: #ffffff;
-      background: rgba(59, 130, 246, 0.5);
+      background: rgba(135, 206, 250, 0.5);
       transform: translateY(-2px);
-      box-shadow: 0 0 12px rgba(59,130,246,0.5);
+      box-shadow: 0 0 12px rgba(135,206,250,0.5);
     }
 
     .menu-item.active {
-      background: linear-gradient(115deg, #ff4d6d, #3b82f6);
+      background: linear-gradient(115deg, #FFB6C1, #89CFF0);
       color: white;
-      box-shadow: 0 4px 15px rgba(59,130,246,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+      box-shadow: 0 4px 15px rgba(137,207,240,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
       border: 0.5px solid rgba(255,255,255,0.3);
     }
 
@@ -182,7 +227,7 @@
       font-weight: 500;
       color: #b9ffd6;
       box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.05);
-      border: 1px solid rgba(0,255,200,0.3);
+      border: 1px solid rgba(173,216,230,0.5);
     }
 
     /* AREA KONTEN DINAMIS */
@@ -217,13 +262,13 @@
       backdrop-filter: blur(8px);
       border-radius: 60px;
       padding: 0.2rem 1.4rem;
-      border: 1px solid rgba(0, 255, 255, 0.5);
+      border: 1px solid rgba(173,216,230,0.7);
       box-shadow: 0 8px 20px -8px rgba(0,0,0,0.4);
       transition: all 0.2s;
     }
     .search-wrapper:focus-within {
-      border-color: #ff4d6d;
-      box-shadow: 0 0 15px rgba(255,77,109,0.4);
+      border-color: #FFB6C1;
+      box-shadow: 0 0 15px rgba(255,182,193,0.4);
     }
 
     .search-input {
@@ -242,22 +287,22 @@
     }
 
     .search-icon {
-      color: #ff4d6d;
+      color: #FFB6C1;
       font-size: 1.1rem;
       margin-right: 0.8rem;
-      text-shadow: 0 0 3px #ff4d6d;
+      text-shadow: 0 0 3px #FFB6C1;
     }
 
     .hero-title {
       font-size: 2.6rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #ff4d6d, #3b82f6, #a855f7);
+      background: linear-gradient(135deg, #89CFF0, #FFB6C1, #87CEEB);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
       margin-bottom: 0.5rem;
       letter-spacing: -0.5px;
-      text-shadow: 0 0 8px rgba(59,130,246,0.3);
+      text-shadow: 0 0 8px rgba(135,206,235,0.3);
     }
 
     .hero-description {
@@ -266,7 +311,7 @@
       backdrop-filter: blur(12px);
       border-radius: 32px;
       padding: 1.5rem 2rem;
-      border: 1px solid rgba(0, 255, 255, 0.3);
+      border: 1px solid rgba(173,216,230,0.5);
       margin-top: 1.5rem;
     }
 
@@ -277,7 +322,7 @@
     }
 
     .back-button {
-      background: linear-gradient(95deg, #ff4d6d, #3b82f6);
+      background: linear-gradient(95deg, #FFB6C1, #89CFF0);
       border: none;
       padding: 10px 20px;
       border-radius: 40px;
@@ -293,9 +338,9 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
     .back-button:hover {
-      background: linear-gradient(95deg, #ff6b85, #5a9eff);
+      background: linear-gradient(95deg, #ffc0cb, #a0d6ff);
       transform: translateX(-2px);
-      box-shadow: 0 4px 15px rgba(59,130,246,0.5);
+      box-shadow: 0 4px 15px rgba(137,207,240,0.5);
     }
 
     .card-grid {
@@ -310,7 +355,7 @@
       border-radius: 20px;
       background: rgba(30, 31, 40, 0.8);
       backdrop-filter: blur(4px);
-      border: 1px solid rgba(0, 255, 200, 0.3);
+      border: 1px solid rgba(173,216,230,0.5);
       transition: all 0.25s ease;
       box-shadow: 0 10px 20px -5px rgba(0,0,0,0.4);
       overflow: hidden;
@@ -320,8 +365,8 @@
 
     .card:hover {
       transform: translateY(-4px);
-      border-color: #ff4d6d;
-      box-shadow: 0 20px 30px -10px rgba(255,77,109,0.4), 0 0 12px rgba(59,130,246,0.3);
+      border-color: #FFB6C1;
+      box-shadow: 0 20px 30px -10px rgba(255,182,193,0.4), 0 0 12px rgba(137,207,240,0.3);
     }
 
     .card-inner {
@@ -342,7 +387,7 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.3);
       background: #101114;
       flex-shrink: 0;
-      border: 1px solid rgba(255,77,109,0.5);
+      border: 1px solid rgba(255,182,193,0.6);
     }
 
     .card-inner div {
@@ -356,9 +401,9 @@
 
     .card-inner i {
       font-size: 1.3rem;
-      color: #3b82f6;
+      color: #89CFF0;
       flex-shrink: 0;
-      text-shadow: 0 0 3px #3b82f6;
+      text-shadow: 0 0 3px #89CFF0;
     }
 
     .btn-get {
@@ -366,7 +411,7 @@
       padding: 14px 22px;
       width: 100%;
       border: none;
-      background: linear-gradient(95deg, #ff4d6d, #a855f7);
+      background: linear-gradient(95deg, #FFB6C1, #89CFF0);
       color: white;
       font-weight: bold;
       font-size: 1rem;
@@ -374,11 +419,11 @@
       cursor: pointer;
       transition: 0.2s;
       font-family: 'Inter', sans-serif;
-      box-shadow: 0 4px 15px rgba(255,77,109,0.4);
+      box-shadow: 0 4px 15px rgba(255,182,193,0.4);
     }
     .btn-get:hover {
       transform: scale(0.98);
-      background: linear-gradient(95deg, #ff6b85, #b86eff);
+      background: linear-gradient(95deg, #ffc0cb, #9acdff);
     }
 
     .empty-state {
@@ -388,7 +433,7 @@
       padding: 2rem;
       border-radius: 28px;
       text-align: center;
-      border: 1px solid #ff4d6d;
+      border: 1px solid #FFB6C1;
     }
 
     .countdown-container {
@@ -400,7 +445,7 @@
       backdrop-filter: blur(8px);
       padding: 2rem;
       border-radius: 32px;
-      border: 1px solid rgba(0,255,255,0.5);
+      border: 1px solid rgba(173,216,230,0.6);
     }
     .countdown-img {
       width: 100%;
@@ -409,7 +454,7 @@
       border-radius: 10px;
       margin-bottom: 20px;
       box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-      border: 2px solid #ff4d6d;
+      border: 2px solid #FFB6C1;
     }
 
     @media (max-width: 850px) {
@@ -449,7 +494,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 255, 255, 0.2), transparent 70%);
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(173, 216, 230, 0.25), transparent 70%);
       opacity: 0;
       transition: opacity 0.2s;
       pointer-events: none;
@@ -465,7 +510,7 @@
   <source src="bg.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
-<!-- Overlay RGB dinamis -->
+<!-- Overlay RGB biru muda & pink muda -->
 <div class="rgb-overlay"></div>
 
 <div class="parent">
@@ -476,6 +521,8 @@
       </div>
       <div class="brand-text">JoyWardana</div>
     </div>
+    <!-- Tombol Play/Stop Music baru di samping brand -->
+    <button id="musicToggleBtn" class="music-toggle-btn"><i class="fas fa-play"></i> Play Music</button>
     <div class="nav-menu">
       <button class="menu-item" data-menu="home"><i class="fas fa-home"></i> Home</button>
       <button class="menu-item" data-menu="script"><i class="fas fa-scroll"></i> Script</button>
@@ -507,6 +554,47 @@
       { name: "DELTA VERSI 2.716", img: "https://i.imgur.com/1rKsOA2.jpeg", link: "https://sub2unlock.io/Dtdrh" }
     ]}
   ];
+
+  // MUSIC PLAYER (HTML5 Audio)
+  let audio = null;
+  let isMusicPlaying = false;
+  const musicBtn = document.getElementById('musicToggleBtn');
+  
+  function initMusic() {
+    audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
+    audio.loop = true;
+    audio.volume = 0.5;
+    audio.addEventListener('ended', () => {
+      if(isMusicPlaying) audio.play();
+    });
+  }
+  
+  function toggleMusic() {
+    if (!audio) initMusic();
+    if (isMusicPlaying) {
+      audio.pause();
+      isMusicPlaying = false;
+      musicBtn.classList.remove('playing');
+      musicBtn.innerHTML = '<i class="fas fa-play"></i> Play Music';
+    } else {
+      audio.play().catch(e => console.log("Autoplay restricted:", e));
+      isMusicPlaying = true;
+      musicBtn.classList.add('playing');
+      musicBtn.innerHTML = '<i class="fas fa-stop"></i> Stop Music';
+    }
+  }
+  
+  if (musicBtn) {
+    musicBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      toggleMusic();
+    });
+  }
+  // Preload audio object tapi tidak auto play
+  window.addEventListener('load', () => {
+    initMusic();
+    // tidak otomatis play, menunggu interaksi user
+  });
 
   let currentView = "home", currentMenu = "home";
   const contentDiv = document.getElementById("dynamicContent");
@@ -581,127 +669,4 @@
       </div>
       <div id="searchResultArea" style="width:100%;"></div>
       <div class="hero-description">
-        <p>Tempat terbaik untuk menemukan script Roblox terbaru. Support PC & Mobile, update cepat, dan anti crash. Akses script Sailor Piece, Violence District, Delta Executor, dan lainnya.</p>
-      </div>
-    `;
-    const searchInput = document.getElementById("globalSearchInput");
-    const resultArea = document.getElementById("searchResultArea");
-    
-    searchInput.addEventListener("input", (e) => {
-      performSearch(e.target.value, resultArea);
-    });
-    searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        performSearch(e.target.value, resultArea);
-      }
-    });
-    resultArea.innerHTML = '';
-  }
-
-  function renderCategoryList(data) {
-    currentView = "list";
-    if (!data.length) { 
-      contentDiv.innerHTML = `<div class="empty-state"><i class="fas fa-box-open"></i> Belum ada data.</div>`; 
-      return; 
-    }
-    let html = `<div style="width:100%; text-align:left;">
-                  <button class="back-button" id="backToHomeBtn"><i class="fas fa-arrow-left"></i> Kembali ke Home</button>
-                </div>
-                <div class="card-grid">`;
-    data.forEach(cat => {
-      html += `<div class="card"><div class="card-inner" onclick='renderDetailFromCategory(${JSON.stringify(cat)})'><img src="${cat.img}" onerror="this.src='https://i.imgur.com/placeholder.png'"><div>${escapeHtml(cat.name)}</div><i class="fas fa-folder-open"></i></div></div>`;
-    });
-    html += `</div>`;
-    contentDiv.innerHTML = html;
-    const backBtn = document.getElementById("backToHomeBtn");
-    if (backBtn) backBtn.addEventListener("click", () => transitionTo(renderHome));
-  }
-
-  function renderDetailFromCategory(category) {
-    currentView = "detail";
-    if (!category.children?.length) {
-      contentDiv.innerHTML = `<div style="width:100%; text-align:left;">
-                                <button class="back-button" id="backToHomeFromEmpty"><i class="fas fa-arrow-left"></i> Kembali ke Home</button>
-                              </div>
-                              <div class="empty-state"><i class="fas fa-exclamation-triangle"></i> Tidak ada script dalam kategori ini.</div>`;
-      const backBtn = document.getElementById("backToHomeFromEmpty");
-      if (backBtn) backBtn.addEventListener("click", () => transitionTo(renderHome));
-      return;
-    }
-    let html = `<div style="width:100%; text-align:left;">
-                  <button class="back-button" id="backToHomeFromDetail"><i class="fas fa-arrow-left"></i> Kembali ke Home</button>
-                </div>
-                <div class="card-grid">`;
-    category.children.forEach(child => {
-      html += `<div class="card"><div class="card-inner" onclick='openLinkWithTimer(${JSON.stringify(child)})'><img src="${child.img}" onerror="this.src='https://i.imgur.com/placeholder.png'"><div>${escapeHtml(child.name)}</div><i class="fas fa-cloud-download-alt"></i></div></div>`;
-    });
-    html += `</div>`;
-    contentDiv.innerHTML = html;
-    const backBtn = document.getElementById("backToHomeFromDetail");
-    if (backBtn) backBtn.addEventListener("click", () => transitionTo(renderHome));
-  }
-
-  function openLinkWithTimer(item) {
-    let remaining = 10;
-    contentDiv.innerHTML = `
-      <div class="countdown-container">
-        <img src="${item.img}" class="countdown-img" alt="${escapeHtml(item.name)}">
-        <h2 style="margin:15px 0; font-size:1.6rem; color:#fff; text-shadow:0 0 5px #ff4d6d;">${escapeHtml(item.name)}</h2>
-        <button class="btn-get" id="countdownBtn"><i class="fas fa-hourglass-half"></i> Tunggu ${remaining} detik</button>
-      </div>
-    `;
-    const btn = document.getElementById("countdownBtn");
-    const interval = setInterval(() => {
-      remaining--;
-      if (btn) btn.innerHTML = `<i class="fas fa-hourglass-half"></i> Tunggu ${remaining} detik`;
-      if (remaining <= 0) {
-        clearInterval(interval);
-        if (btn) {
-          btn.innerHTML = `<i class="fas fa-arrow-right"></i> Next`;
-          btn.style.background = "linear-gradient(95deg, #4c8bff, #b86eff)";
-          btn.onclick = () => window.location.href = item.link;
-        }
-      }
-    }, 1000);
-  }
-
-  function setActiveMenuButton(menuValue) {
-    document.querySelectorAll(".menu-item").forEach(btn => {
-      const val = btn.getAttribute("data-menu");
-      if (val === menuValue) btn.classList.add("active");
-      else btn.classList.remove("active");
-    });
-  }
-
-  function navigateTo(menu) {
-    currentMenu = menu;
-    setActiveMenuButton(menu);
-    if (menu === "home") {
-      transitionTo(renderHome);
-    } else if (menu === "script") {
-      transitionTo(() => renderCategoryList(scriptData));
-    } else if (menu === "executor") {
-      transitionTo(() => renderCategoryList(executorData));
-    } else if (menu === "discord") {
-      window.open("https://discord.gg/Yyn9FQJbhx", "_blank");
-    }
-  }
-
-  document.querySelectorAll(".menu-item").forEach(btn => {
-    btn.addEventListener("click", () => navigateTo(btn.getAttribute("data-menu")));
-  });
-
-  const navbar = document.querySelector(".navbar");
-  navbar?.addEventListener("mousemove", (e) => {
-    const x = (e.clientX / navbar.clientWidth) * 100;
-    const y = (e.clientY / navbar.clientHeight) * 100;
-    navbar.style.setProperty("--x", `${x}%`);
-    navbar.style.setProperty("--y", `${y}%`);
-  });
-
-  window.renderDetailFromCategory = renderDetailFromCategory;
-  window.openLinkWithTimer = openLinkWithTimer;
-  navigateTo("home");
-</script>
-</body>
-</html>
+        <p>Tempat terbaik untuk menemukan script Roblox terbaru. Support PC & Mobile, update cepat, dan anti crash. Akses script Sailor Piece, Vi
