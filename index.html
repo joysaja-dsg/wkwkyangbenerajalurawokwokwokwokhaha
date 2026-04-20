@@ -462,7 +462,7 @@
 
 <!-- VIDEO BACKGROUND -->
 <video class="video-background" autoplay loop muted playsinline>
-  <source src="/Aset/bg.mp4" type="video/mp4">
+  <source src="bg.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 <!-- Overlay RGB dinamis -->
@@ -472,7 +472,7 @@
   <div class="navbar">
     <div class="nav-brand">
       <div class="brand-icon">
-        <img src="/Aset/fav.png" alt="JoyWardana Icon" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fas fa-crown\'></i>';">
+        <img src="fav.png" alt="JoyWardana Icon" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fas fa-crown\'></i>';">
       </div>
       <div class="brand-text">JoyWardana</div>
     </div>
@@ -491,7 +491,7 @@
 </div>
 
 <script>
-
+  // DATA SCRIPT & EXECUTOR (SAMA PERSIS)
   const scriptData = [
     { name: "SAILOR PIECE SCRIPT", img: "https://i.imgur.com/zZ3YUdf.png", children: [
       { name: "Mola Hub", img: "https://i.imgur.com/zZ3YUdf.png", link: "https://sub4unlock.io/PSik1" },
@@ -633,4 +633,4 @@
                 </div>
                 <div class="card-grid">`;
     category.children.forEach(child => {
-      html += `<div class="card"><div class="card-inner" onclick='openLinkWithTimer(${JSON.stringify(child)})'><img src="${child.img}" onerror="this.src='https://i.imgur.com/placeholder.png'"><div>${escapeHtml(child.name)}</div><i class="f
+      html += `<div class="card"><div class="card-inner" onclick='openLinkWithTimer(${JSON.stringify(child)})'><img src="${child.img}" onerror="this.src='https://i.imgur.com/placeholder.png'"><div>${escapeHtml(child.name)}</div><i class="fas fa
