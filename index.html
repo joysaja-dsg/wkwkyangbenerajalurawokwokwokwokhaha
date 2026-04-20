@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-  <title>JoyWardana | Roblox Script Hub - RGB Theme</title>
-  <!-- Font Awesome 6 (Free) -->
+  <title>VanzDroid</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Fonts: Inter + Outfit -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * {
@@ -16,73 +14,41 @@
     }
 
     body {
+      background: radial-gradient(circle at 20% 30%, #0a0c10, #030507);
       min-height: 100vh;
       font-family: 'Inter', 'Outfit', sans-serif;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* Video Background */
-    .video-background {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -2;
-      filter: brightness(0.7) contrast(1.1) saturate(1.2);
-    }
-
-    /* Overlay dinamis RGB semi-transparan untuk memperkuat warna */
-    .rgb-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 30% 50%, rgba(255,0,100,0.15), rgba(0,255,200,0.1), rgba(100,0,255,0.2));
-      z-index: -1;
-      pointer-events: none;
-      animation: rgbShift 12s infinite alternate;
-    }
-
-    @keyframes rgbShift {
-      0% { background: radial-gradient(circle at 30% 50%, rgba(255,0,80,0.2), rgba(0,255,200,0.05), rgba(100,0,255,0.2)); }
-      50% { background: radial-gradient(circle at 70% 60%, rgba(0,255,150,0.2), rgba(255,100,0,0.1), rgba(150,0,255,0.2)); }
-      100% { background: radial-gradient(circle at 20% 80%, rgba(255,50,150,0.2), rgba(0,200,255,0.1), rgba(200,0,255,0.2)); }
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
     }
 
     .parent {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: auto auto auto;
-      gap: 1rem;
+      grid-template-rows: repeat(10, 1fr);
       width: 100%;
       max-width: 1400px;
-      background: transparent;
       margin: 0 auto;
       position: relative;
-      z-index: 5;
     }
 
-    /* Navbar - dengan efek kaca & neon RGB */
     .navbar {
-      grid-column: 2 / 12;
-      position: sticky;
-      top: 1rem;
-      z-index: 100;
-      background: rgba(20, 22, 32, 0.75);
-      backdrop-filter: blur(12px);
+      grid-area: 2 / 2 / 3 / 12;
+      background: #1e1f24;
       border-radius: 80px;
-      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0.5rem 1.5rem;
-      border: 1px solid rgba(0, 255, 255, 0.4);
+      border: 1px solid rgba(90, 100, 120, 0.3);
       transition: all 0.2s ease;
-      flex-wrap: wrap;
+      position: relative;
+      z-index: 20;
+      --x: 50%;
+      --y: 50%;
+      overflow: hidden;
     }
 
     .nav-brand {
@@ -93,7 +59,7 @@
     }
 
     .brand-icon {
-      background: linear-gradient(145deg, #2c2e3a, #1b1d26);
+      background: #2c2e3a;
       width: 42px;
       height: 42px;
       border-radius: 30px;
@@ -103,32 +69,30 @@
       box-shadow: inset 0 1px 2px rgba(255,255,255,0.08), 0 4px 8px rgba(0,0,0,0.3);
       overflow: hidden;
     }
+
     .brand-icon img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 30px;
     }
 
     .brand-text {
       font-weight: 700;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       letter-spacing: -0.3px;
-      background: linear-gradient(135deg, #ff4d6d, #3b82f6, #a855f7);
-      background-clip: text;
+      background: linear-gradient(135deg, #e2e8f0, #b9c3db);
       -webkit-background-clip: text;
       color: transparent;
-      text-shadow: 0 0 5px rgba(255,77,109,0.3);
     }
 
     .nav-menu {
       display: flex;
       gap: 0.75rem;
-      background: rgba(0, 0, 0, 0.4);
+      background: #15161c;
       padding: 0.35rem;
       border-radius: 100px;
       box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.03);
-      flex-wrap: wrap;
-      justify-content: center;
     }
 
     .menu-item {
@@ -144,86 +108,387 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: #d1d5f0;
-      letter-spacing: -0.2px;
+      color: #a0a5b8;
       position: relative;
     }
 
     .menu-item i {
       font-size: 1rem;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, color 0.2s;
     }
 
     .menu-item:hover {
-      color: #ffffff;
-      background: rgba(59, 130, 246, 0.5);
+      color: #f0f3fa;
+      background: rgba(60, 70, 100, 0.4);
       transform: translateY(-2px);
-      box-shadow: 0 0 12px rgba(59,130,246,0.5);
+    }
+
+    .menu-item:hover i {
+      transform: scale(1.1);
+      color: #8ba1ff;
+    }
+
+    .menu-item:active {
+      transform: scale(0.95);
     }
 
     .menu-item.active {
-      background: linear-gradient(115deg, #ff4d6d, #3b82f6);
+      background: linear-gradient(115deg, #2b2e3f, #1f212f);
       color: white;
-      box-shadow: 0 4px 15px rgba(59,130,246,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
-      border: 0.5px solid rgba(255,255,255,0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      border: 0.5px solid rgba(120, 140, 200, 0.3);
     }
 
-    .menu-item.active i {
-      color: #fff;
-      text-shadow: 0 0 3px white;
+    .menu-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 20%;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, #6b8cff, #9b6eff);
+      border-radius: 3px;
+    }
+
+    .nav-extra {
+      display: flex;
+      align-items: center;
     }
 
     .status-badge {
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
+      background: #23252e;
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      color: #b9c3db;
+    }
+
+    @media (max-width: 850px) {
+      .brand-text { display: none; }
+    }
+
+    .navbar::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at var(--x) var(--y), rgba(140, 170, 240, 0.08), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .navbar:hover::before {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<div class="parent">
+  <div class="navbar">
+    <div class="nav-brand">
+      <div class="brand-icon">
+        <img src="/Aset/fav.png">
+      </div>
+      <div class="brand-text">VanzDroid</div>
+    </div>
+
+    <div class="nav-menu">
+      <button class="menu-item active" data-menu="script">
+        <i class="fas fa-scroll"></i> Script
+      </button>
+      <button class="menu-item" data-menu="executor">
+        <i class="fas fa-bolt"></i> Executor
+      </button>
+      <button class="menu-item" data-menu="discord">
+        <i class="fab fa-discord"></i> Discord
+      </button>
+    </div>
+
+    <div class="nav-extra">
+      <div class="status-badge">Online</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const menuBtns = document.querySelectorAll('.menu-item');
+
+  function setActiveMenu(menuId) {
+    menuBtns.forEach(btn => {
+      btn.classList.toggle('active', btn.getAttribute('data-menu') === menuId);
+    });
+  }
+
+  menuBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const menuValue = btn.getAttribute('data-menu');
+      if (!menuValue) return;
+
+      btn.style.transform = 'scale(0.94)';
+      setTimeout(() => btn.style.transform = '', 150);
+
+      setActiveMenu(menuValue);
+
+      const ripple = document.createElement('span');
+      Object.assign(ripple.style, {
+        position: 'absolute',
+        width: '8px',
+        height: '8px',
+        background: 'rgba(140,170,255,0.5)',
+        borderRadius: '50%',
+        transform: 'translate(-50%, -50%) scale(0)',
+        transition: 'transform 0.4s, opacity 0.5s'
+      });
+
+      const rect = btn.getBoundingClientRect();
+      ripple.style.left = (e.clientX - rect.left) + 'px';
+      ripple.style.top = (e.clientY - rect.top) + 'px';
+
+      btn.appendChild(ripple);
+
+      requestAnimationFrame(() => {
+        ripple.style.transform = 'translate(-50%, -50%) scale(8)';
+        ripple.style.opacity = '0';
+      });
+
+      setTimeout(() => ripple.remove(), 400);
+    });
+  });
+
+  setActiveMenu('script');
+
+  const navbar = document.querySelector('.navbar');
+  navbar.addEventListener('mousemove', (e) => {
+    navbar.style.setProperty('--x', (e.offsetX / navbar.clientWidth) * 100 + '%');
+    navbar.style.setProperty('--y', (e.offsetY / navbar.clientHeight) * 100 + '%');
+  });
+</script>
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>VanzDroid | Roblox Script Hub</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts: Inter + Outfit -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 30%, #0a0c10, #030507);
+      min-height: 100vh;
+      font-family: 'Inter', 'Outfit', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    /* === GRID LAYOUT (12 kolom, 10 baris) === */
+    .parent {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 0px;
+      width: 100%;
+      max-width: 1400px;
+      background: transparent;
+      margin: 0 auto;
+      position: relative;
+      min-height: 90vh;
+    }
+
+    /* Navbar - area div1 (2/2/3/12) */
+    .navbar {
+      grid-area: 2 / 2 / 3 / 12;
+      background: #1e1f24;
+      border-radius: 80px;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 1.5rem;
+      border: 1px solid rgba(90, 100, 120, 0.3);
+      transition: all 0.2s ease;
+      position: relative;
+      z-index: 20;
+    }
+
+    /* Bagian kiri navbar (logo / brand) */
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 0.5rem;
+    }
+
+    .brand-icon {
+      background: #2c2e3a;
+      width: 42px;
+      height: 42px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.08), 0 4px 8px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+
+    .brand-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 30px;
+    }
+
+    .brand-text {
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #e2e8f0, #b9c3db);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    /* Menu tengah (3 menu utama) */
+    .nav-menu {
+      display: flex;
+      gap: 0.75rem;
+      background: #15161c;
+      padding: 0.35rem;
+      border-radius: 100px;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .menu-item {
+      background: transparent;
+      border: none;
+      padding: 0.65rem 1.8rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #a0a5b8;
+      letter-spacing: -0.2px;
+      position: relative;
+      backdrop-filter: blur(2px);
+    }
+
+    .menu-item i {
+      font-size: 1rem;
+      transition: transform 0.2s ease, color 0.2s;
+    }
+
+    .menu-item:hover {
+      color: #f0f3fa;
+      background: rgba(60, 70, 100, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .menu-item:hover i {
+      transform: scale(1.1);
+      color: #8ba1ff;
+    }
+
+    .menu-item:active {
+      transform: scale(0.95);
+      transition: transform 0.05s linear;
+    }
+
+    .menu-item.active {
+      background: linear-gradient(115deg, #2b2e3f, #1f212f);
+      color: white;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.08);
+      text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+      border: 0.5px solid rgba(120, 140, 200, 0.3);
+    }
+
+    .menu-item.active i {
+      color: #a5c1ff;
+      filter: drop-shadow(0 0 2px rgba(100,150,255,0.5));
+    }
+
+    .menu-item.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 20%;
+      width: 60%;
+      height: 3px;
+      background: linear-gradient(90deg, #6b8cff, #9b6eff);
+      border-radius: 3px;
+      box-shadow: 0 0 6px #6b8cff;
+      transition: all 0.2s;
+    }
+
+    /* Bagian kanan navbar - status tanpa icon */
+    .nav-extra {
+      display: flex;
+      align-items: center;
+    }
+
+    .status-badge {
+      background: #23252e;
       padding: 6px 16px;
       border-radius: 50px;
       font-size: 0.8rem;
       font-weight: 500;
-      color: #b9ffd6;
-      box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.05);
-      border: 1px solid rgba(0,255,200,0.3);
+      color: #b9c3db;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.02);
     }
 
-    /* AREA KONTEN DINAMIS */
+    /* === KONTEN UTAMA DI BAWAH NAVBAR === */
     .hero-section {
-      grid-column: 2 / 12;
+      grid-area: 3 / 2 / 10 / 12;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       text-align: center;
-      padding: 1rem;
-      width: 100%;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .fade-out {
-      opacity: 0;
-      transform: translateY(8px);
+      padding: 1rem 1rem 2rem 1rem;
     }
 
+    /* SEARCH BAR - statis, modern, melengkung */
     .search-container {
       width: 100%;
-      max-width: 580px;
-      margin: 1.2rem auto 1rem auto;
+      max-width: 550px;
+      margin-bottom: 1.8rem;
     }
 
     .search-wrapper {
       display: flex;
       align-items: center;
-      background: rgba(26, 28, 36, 0.85);
-      backdrop-filter: blur(8px);
+      background: #1a1c24;
       border-radius: 60px;
-      padding: 0.2rem 1.4rem;
-      border: 1px solid rgba(0, 255, 255, 0.5);
+      padding: 0.2rem 0.2rem 0.2rem 1.2rem;
+      border: 1px solid rgba(90, 100, 120, 0.4);
       box-shadow: 0 8px 20px -8px rgba(0,0,0,0.4);
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
-    .search-wrapper:focus-within {
-      border-color: #ff4d6d;
-      box-shadow: 0 0 15px rgba(255,77,109,0.4);
+
+    .search-wrapper:hover {
+      border-color: rgba(120, 140, 200, 0.6);
+      background: #1f212a;
+    }
+
+    .search-icon {
+      color: #8ba1ff;
+      font-size: 1.1rem;
+      margin-right: 0.8rem;
     }
 
     .search-input {
@@ -233,214 +498,165 @@
       padding: 0.85rem 0;
       font-size: 0.95rem;
       font-family: 'Inter', sans-serif;
-      color: #f0f3ff;
+      color: #e2e8f0;
       outline: none;
     }
 
     .search-input::placeholder {
-      color: #a0a5c0;
+      color: #6b7280;
+      font-weight: 400;
     }
 
-    .search-icon {
-      color: #ff4d6d;
-      font-size: 1.1rem;
-      margin-right: 0.8rem;
-      text-shadow: 0 0 3px #ff4d6d;
+    .search-button {
+      background: linear-gradient(115deg, #2b2e3f, #1f212f);
+      border: none;
+      padding: 0.65rem 1.6rem;
+      border-radius: 50px;
+      color: #cbd5e6;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: default;
+      transition: 0.2s;
+      border-left: 1px solid rgba(90, 100, 120, 0.3);
+      font-family: 'Inter', sans-serif;
     }
 
+    .search-button i {
+      margin-right: 6px;
+      font-size: 0.8rem;
+    }
+
+    /* Hero Title */
     .hero-title {
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #ff4d6d, #3b82f6, #a855f7);
+      background: linear-gradient(135deg, #e2e8f0, #a5b4fc);
       background-clip: text;
       -webkit-background-clip: text;
       color: transparent;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       letter-spacing: -0.5px;
-      text-shadow: 0 0 8px rgba(59,130,246,0.3);
     }
 
+    /* Hero Description */
     .hero-description {
       max-width: 800px;
-      background: rgba(20, 22, 35, 0.7);
+      background: rgba(30, 31, 36, 0.7);
       backdrop-filter: blur(12px);
       border-radius: 32px;
       padding: 1.5rem 2rem;
-      border: 1px solid rgba(0, 255, 255, 0.3);
-      margin-top: 1.5rem;
+      border: 1px solid rgba(90, 100, 120, 0.3);
+      box-shadow: 0 15px 35px -15px rgba(0,0,0,0.5);
     }
 
     .hero-description p {
       font-size: 1.05rem;
       line-height: 1.6;
-      color: #e2e8ff;
+      color: #cbd5e6;
+      font-weight: 400;
     }
 
-    .back-button {
-      background: linear-gradient(95deg, #ff4d6d, #3b82f6);
-      border: none;
-      padding: 10px 20px;
-      border-radius: 40px;
-      color: white;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.2s;
-      font-size: 0.9rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .back-button:hover {
-      background: linear-gradient(95deg, #ff6b85, #5a9eff);
-      transform: translateX(-2px);
-      box-shadow: 0 4px 15px rgba(59,130,246,0.5);
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1.5rem;
-      width: 100%;
-      margin-top: 1rem;
-    }
-
-    .card {
-      border-radius: 20px;
-      background: rgba(30, 31, 40, 0.8);
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(0, 255, 200, 0.3);
-      transition: all 0.25s ease;
-      box-shadow: 0 10px 20px -5px rgba(0,0,0,0.4);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: #ff4d6d;
-      box-shadow: 0 20px 30px -10px rgba(255,77,109,0.4), 0 0 12px rgba(59,130,246,0.3);
-    }
-
-    .card-inner {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      padding: 1rem 1.2rem;
-      cursor: pointer;
-      background: rgba(26, 28, 36, 0.9);
-      flex: 1;
-    }
-
-    .card-inner img {
-      width: 84px;
-      height: 84px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      background: #101114;
-      flex-shrink: 0;
-      border: 1px solid rgba(255,77,109,0.5);
-    }
-
-    .card-inner div {
-      font-weight: 600;
-      font-size: 1rem;
-      color: #f0f3ff;
-      text-align: left;
-      flex: 1;
-      word-break: break-word;
-    }
-
-    .card-inner i {
-      font-size: 1.3rem;
-      color: #3b82f6;
-      flex-shrink: 0;
-      text-shadow: 0 0 3px #3b82f6;
-    }
-
-    .btn-get {
-      margin-top: 1rem;
-      padding: 14px 22px;
-      width: 100%;
-      border: none;
-      background: linear-gradient(95deg, #ff4d6d, #a855f7);
-      color: white;
-      font-weight: bold;
-      font-size: 1rem;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: 0.2s;
-      font-family: 'Inter', sans-serif;
-      box-shadow: 0 4px 15px rgba(255,77,109,0.4);
-    }
-    .btn-get:hover {
-      transform: scale(0.98);
-      background: linear-gradient(95deg, #ff6b85, #b86eff);
-    }
-
-    .empty-state {
-      color: #ffb3c6;
-      background: rgba(30,31,40,0.8);
-      backdrop-filter: blur(4px);
-      padding: 2rem;
-      border-radius: 28px;
-      text-align: center;
-      border: 1px solid #ff4d6d;
-    }
-
-    .countdown-container {
-      text-align: center;
-      max-width: 500px;
-      margin: 0 auto;
-      width: 100%;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(8px);
-      padding: 2rem;
-      border-radius: 32px;
-      border: 1px solid rgba(0,255,255,0.5);
-    }
-    .countdown-img {
-      width: 100%;
-      max-width: 280px;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-      border: 2px solid #ff4d6d;
-    }
-
+    /* Responsive design */
     @media (max-width: 850px) {
-      .navbar { padding: 0.5rem 1rem; border-radius: 50px; justify-content: center; gap: 0.8rem; top: 0.5rem; }
-      .nav-menu { order: 2; width: 100%; justify-content: center; }
-      .nav-brand { order: 1; }
-      .nav-extra { order: 3; }
-      .menu-item { padding: 0.4rem 1rem; font-size: 0.8rem; }
-      .hero-title { font-size: 2rem; }
-      .card-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-      .card-inner img { width: 70px; height: 70px; }
+      .navbar {
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+      }
+      .menu-item {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+        gap: 6px;
+      }
+      .brand-text {
+        display: none;
+      }
+      .brand-icon {
+        width: 36px;
+        height: 36px;
+      }
+      .status-badge {
+        padding: 4px 12px;
+        font-size: 0.7rem;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
+      .hero-description p {
+        font-size: 0.95rem;
+      }
+      .hero-section {
+        padding: 0.5rem 1rem 2rem 1rem;
+      }
+      .search-container {
+        max-width: 450px;
+        margin-bottom: 1.2rem;
+      }
+      .search-input {
+        padding: 0.7rem 0;
+        font-size: 0.85rem;
+      }
+      .search-button {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.75rem;
+      }
     }
 
     @media (max-width: 600px) {
-      .hero-section { padding: 0.5rem; }
-      .hero-title { font-size: 1.8rem; }
-      .card-inner img { width: 60px; height: 60px; }
-      .card-inner div { font-size: 0.9rem; }
-      .card-inner { padding: 0.8rem; gap: 0.8rem; }
-      .countdown-img { max-width: 200px; }
+      .navbar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.6rem;
+        border-radius: 40px;
+        padding: 0.6rem 1rem;
+      }
+      .nav-menu {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+      }
+      .nav-brand {
+        order: 1;
+      }
+      .nav-extra {
+        order: 3;
+      }
+      .hero-section {
+        padding: 0.25rem 1rem 1.5rem 1rem;
+      }
+      .hero-title {
+        font-size: 1.8rem;
+      }
+      .hero-description {
+        padding: 1rem 1.2rem;
+      }
+      .hero-description p {
+        font-size: 0.85rem;
+      }
+      .search-container {
+        max-width: 100%;
+        margin-bottom: 1rem;
+      }
+      .search-wrapper {
+        padding-left: 1rem;
+      }
+      .search-button span {
+        display: none;
+      }
+      .search-button i {
+        margin-right: 0;
+      }
+      .search-button {
+        padding: 0.5rem 1rem;
+      }
     }
 
-    @media (max-width: 480px) {
-      .card-grid { grid-template-columns: 1fr; }
-    }
-
+    /* Efek cahaya pada navbar */
     .navbar {
       --x: 50%;
       --y: 50%;
-      position: sticky;
+      position: relative;
       overflow: hidden;
+      transition: box-shadow 0.3s;
     }
     .navbar::before {
       content: '';
@@ -449,259 +665,120 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(0, 255, 255, 0.2), transparent 70%);
+      background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(140, 170, 240, 0.08), transparent 70%);
       opacity: 0;
       transition: opacity 0.2s;
       pointer-events: none;
       border-radius: inherit;
     }
-    .navbar:hover::before { opacity: 1; }
+    .navbar:hover::before {
+      opacity: 1;
+    }
+
+    /* Tooltip dihapus - tidak ada aturan :hover::after */
   </style>
 </head>
 <body>
-
-<!-- VIDEO BACKGROUND -->
-<video class="video-background" autoplay loop muted playsinline>
-  <source src="/Aset/bg.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
-<!-- Overlay RGB dinamis -->
-<div class="rgb-overlay"></div>
-
 <div class="parent">
+  <!-- Navbar -->
   <div class="navbar">
     <div class="nav-brand">
       <div class="brand-icon">
-        <img src="/Aset/fav.png" alt="JoyWardana Icon" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\'fas fa-crown\'></i>';">
+        <img src="/Aset/fav.png" alt="VanzDroid Icon">
       </div>
-      <div class="brand-text">JoyWardana</div>
+      <div class="brand-text">VanzDroid</div>
     </div>
+
     <div class="nav-menu">
-      <button class="menu-item" data-menu="home"><i class="fas fa-home"></i> Home</button>
-      <button class="menu-item" data-menu="script"><i class="fas fa-scroll"></i> Script</button>
-      <button class="menu-item" data-menu="executor"><i class="fas fa-bolt"></i> Executor</button>
-      <button class="menu-item" data-menu="discord"><i class="fab fa-discord"></i> Discord</button>
+      <button class="menu-item active" data-menu="script">
+        <i class="fas fa-scroll"></i> Script
+      </button>
+      <button class="menu-item" data-menu="executor">
+        <i class="fas fa-bolt"></i> Executor
+      </button>
+      <button class="menu-item" data-menu="discord">
+        <i class="fab fa-discord"></i> Discord
+      </button>
     </div>
+
     <div class="nav-extra">
-      <div class="status-badge"><i class="fas fa-circle" style="font-size: 0.6rem; color: #3aff8e; margin-right: 6px;"></i> Online</div>
+      <div class="status-badge">
+        Online
+      </div>
     </div>
   </div>
 
-  <div class="hero-section" id="dynamicContent"></div>
+  <!-- Konten di bawah navbar -->
+  <div class="hero-section">
+    <div class="search-container">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-input" placeholder="Cari script... (Blox Fruits, Tsunami, dll)" value="">
+        <div class="search-button">
+          <i class="fas fa-arrow-right"></i><span> Cari</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-title">VanzDroid</div>
+    <div class="hero-description">
+      <p>The BEST place to find Roblox scripts for Blox Fruits, Escape Tsunami, Abyss, Rivals, and others. Updated daily, auto features, fast, and works on PC & mobile. Trusted and straight to the point.</p>
+    </div>
+  </div>
 </div>
 
 <script>
-  // DATA SCRIPT & EXECUTOR (SAMA PERSIS)
-  const scriptData = [
-    { name: "SAILOR PIECE SCRIPT", img: "https://i.imgur.com/zZ3YUdf.png", children: [
-      { name: "Mola Hub", img: "https://i.imgur.com/zZ3YUdf.png", link: "https://sub4unlock.io/PSik1" },
-      { name: "Vora Hub", img: "https://i.imgur.com/zZ3YUdf.png", link: "https://sub4unlock.io/rZgM1" },
-      { name: "Void Hub", img: "https://i.imgur.com/zZ3YUdf.png", link: "https://sub4unlock.io/icn6r" }
-    ]},
-    { name: "VIOLENCE DISTRICT SCRIPT", img: "https://i.imgur.com/lnFN0aw.jpeg", children: [
-      { name: "ZiaanHub", img: "https://i.imgur.com/lnFN0aw.jpeg", link: "https://sfl.gl/yqefy" }
-    ]}
-  ];
-  const executorData = [
-    { name: "DELTA ANDROID VERSION", img: "https://i.imgur.com/1rKsOA2.jpeg", children: [
-      { name: "DELTA VERSI 2.716", img: "https://i.imgur.com/1rKsOA2.jpeg", link: "https://sfl.gl/6eZ5e" }
-    ]}
-  ];
+  // Interaksi menu: animasi, active class, dan redirect untuk Discord
+  const menuBtns = document.querySelectorAll('.menu-item');
 
-  let currentView = "home", currentMenu = "home";
-  const contentDiv = document.getElementById("dynamicContent");
-
-  function escapeHtml(str) {
-    return str.replace(/[&<>]/g, function(m) {
-      if (m === '&') return '&amp;';
-      if (m === '<') return '&lt;';
-      if (m === '>') return '&gt;';
-      return m;
-    });
-  }
-
-  function transitionTo(newRenderFn) {
-    contentDiv.classList.add("fade-out");
-    setTimeout(() => {
-      newRenderFn();
-      contentDiv.classList.remove("fade-out");
-    }, 200);
-  }
-
-  function performSearch(keyword, resultArea) {
-    const trimmed = keyword.toLowerCase().trim();
-    if (trimmed.length < 2) {
-      resultArea.innerHTML = '';
-      return;
-    }
-    let results = [];
-    const searchInArray = (dataArray) => {
-      dataArray.forEach(category => {
-        if (category.name.toLowerCase().includes(trimmed)) {
-          results.push({ type: "category", data: category });
-        }
-        category.children.forEach(child => {
-          if (child.name.toLowerCase().includes(trimmed)) {
-            results.push({ type: "child", data: child, parentImg: category.img });
-          }
-        });
-      });
-    };
-    searchInArray(scriptData);
-    searchInArray(executorData);
-    
-    if (results.length === 0) {
-      resultArea.innerHTML = `<div class="empty-state"><i class="fas fa-folder-open"></i> Tidak ditemukan script yang cocok.</div>`;
-      return;
-    }
-    
-    let cardsHtml = `<div class="card-grid">`;
-    results.forEach(res => {
-      if (res.type === "category") {
-        const cat = res.data;
-        cardsHtml += `<div class="card"><div class="card-inner" onclick='renderDetailFromCategory(${JSON.stringify(cat)})'><img src="${cat.img}" onerror="this.src='https://i.imgur.com/placeholder.png'"><div>${escapeHtml(cat.name)}</div><i class="fas fa-chevron-right"></i></div></div>`;
+  function setActiveMenu(menuId) {
+    menuBtns.forEach(btn => {
+      const val = btn.getAttribute('data-menu');
+      if (val === menuId) {
+        btn.classList.add('active');
       } else {
-        const child = res.data;
-        cardsHtml += `<div class="card"><div class="card-inner" onclick='openLinkWithTimer(${JSON.stringify(child)})'><img src="${child.img}" onerror="this.src='https://i.imgur.com/placeholder.png'"><div>${escapeHtml(child.name)}</div><i class="fas fa-download"></i></div></div>`;
+        btn.classList.remove('active');
       }
     });
-    cardsHtml += `</div>`;
-    resultArea.innerHTML = cardsHtml;
   }
 
-  function renderHome() {
-    currentView = "home";
-    contentDiv.innerHTML = `
-      <div class="hero-title">JoyWardana</div>
-      <div class="search-container">
-        <div class="search-wrapper">
-          <i class="fas fa-search search-icon"></i>
-          <input type="text" class="search-input" id="globalSearchInput" placeholder="Cari script..." autocomplete="off">
-        </div>
-      </div>
-      <div id="searchResultArea" style="width:100%;"></div>
-      <div class="hero-description">
-        <p>Tempat terbaik untuk menemukan script Roblox terbaru. Support PC & Mobile, update cepat, dan anti crash. Akses script Sailor Piece, Violence District, Delta Executor, dan lainnya.</p>
-      </div>
-    `;
-    const searchInput = document.getElementById("globalSearchInput");
-    const resultArea = document.getElementById("searchResultArea");
-    
-    searchInput.addEventListener("input", (e) => {
-      performSearch(e.target.value, resultArea);
-    });
-    searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        performSearch(e.target.value, resultArea);
+  menuBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const menuValue = btn.getAttribute('data-menu');
+      if (!menuValue) return;
+
+      // Animasi milih: shrink + icon bounce
+      btn.style.transform = 'scale(0.94)';
+      const icon = btn.querySelector('i');
+      if (icon) {
+        icon.style.transform = 'scale(1.2)';
+        setTimeout(() => {
+          if (icon) icon.style.transform = '';
+        }, 130);
       }
-    });
-    resultArea.innerHTML = '';
-  }
+      setTimeout(() => {
+        if (btn) btn.style.transform = '';
+      }, 150);
 
-  function renderCategoryList(data) {
-    currentView = "list";
-    if (!data.length) { 
-      contentDiv.innerHTML = `<div class="empty-state"><i class="fas fa-box-open"></i> Belum ada data.</div>`; 
-      return; 
-    }
-    let html = `<div style="width:100%; text-align:left;">
-                  <button class="back-button" id="backToHomeBtn"><i class="fas fa-arrow-left"></i> Kembali ke Home</button>
-                </div>
-                <div class="card-grid">`;
-    data.forEach(cat => {
-      html += `<div class="card"><div class="card-inner" onclick='renderDetailFromCategory(${JSON.stringify(cat)})'><img src="${cat.img}" onerror="this.src='https://i.imgur.com/placeholder.png'"><div>${escapeHtml(cat.name)}</div><i class="fas fa-folder-open"></i></div></div>`;
-    });
-    html += `</div>`;
-    contentDiv.innerHTML = html;
-    const backBtn = document.getElementById("backToHomeBtn");
-    if (backBtn) backBtn.addEventListener("click", () => transitionTo(renderHome));
-  }
-
-  function renderDetailFromCategory(category) {
-    currentView = "detail";
-    if (!category.children?.length) {
-      contentDiv.innerHTML = `<div style="width:100%; text-align:left;">
-                                <button class="back-button" id="backToHomeFromEmpty"><i class="fas fa-arrow-left"></i> Kembali ke Home</button>
-                              </div>
-                              <div class="empty-state"><i class="fas fa-exclamation-triangle"></i> Tidak ada script dalam kategori ini.</div>`;
-      const backBtn = document.getElementById("backToHomeFromEmpty");
-      if (backBtn) backBtn.addEventListener("click", () => transitionTo(renderHome));
-      return;
-    }
-    let html = `<div style="width:100%; text-align:left;">
-                  <button class="back-button" id="backToHomeFromDetail"><i class="fas fa-arrow-left"></i> Kembali ke Home</button>
-                </div>
-                <div class="card-grid">`;
-    category.children.forEach(child => {
-      html += `<div class="card"><div class="card-inner" onclick='openLinkWithTimer(${JSON.stringify(child)})'><img src="${child.img}" onerror="this.src='https://i.imgur.com/placeholder.png'"><div>${escapeHtml(child.name)}</div><i class="fas fa-cloud-download-alt"></i></div></div>`;
-    });
-    html += `</div>`;
-    contentDiv.innerHTML = html;
-    const backBtn = document.getElementById("backToHomeFromDetail");
-    if (backBtn) backBtn.addEventListener("click", () => transitionTo(renderHome));
-  }
-
-  function openLinkWithTimer(item) {
-    let remaining = 10;
-    contentDiv.innerHTML = `
-      <div class="countdown-container">
-        <img src="${item.img}" class="countdown-img" alt="${escapeHtml(item.name)}">
-        <h2 style="margin:15px 0; font-size:1.6rem; color:#fff; text-shadow:0 0 5px #ff4d6d;">${escapeHtml(item.name)}</h2>
-        <button class="btn-get" id="countdownBtn"><i class="fas fa-hourglass-half"></i> Tunggu ${remaining} detik</button>
-      </div>
-    `;
-    const btn = document.getElementById("countdownBtn");
-    const interval = setInterval(() => {
-      remaining--;
-      if (btn) btn.innerHTML = `<i class="fas fa-hourglass-half"></i> Tunggu ${remaining} detik`;
-      if (remaining <= 0) {
-        clearInterval(interval);
-        if (btn) {
-          btn.innerHTML = `<i class="fas fa-arrow-right"></i> Next`;
-          btn.style.background = "linear-gradient(95deg, #4c8bff, #b86eff)";
-          btn.onclick = () => window.location.href = item.link;
-        }
+      // Jika menu Discord, buka link di tab baru
+      if (menuValue === 'discord') {
+        window.open('https://discord.com/invite/npPZXV2p4a', '_blank');
+        setActiveMenu(menuValue);
+      } else {
+        // Untuk Script dan Executor, hanya ubah active class
+        setActiveMenu(menuValue);
       }
-    }, 1000);
-  }
 
-  function setActiveMenuButton(menuValue) {
-    document.querySelectorAll(".menu-item").forEach(btn => {
-      const val = btn.getAttribute("data-menu");
-      if (val === menuValue) btn.classList.add("active");
-      else btn.classList.remove("active");
-    });
-  }
-
-  function navigateTo(menu) {
-    currentMenu = menu;
-    setActiveMenuButton(menu);
-    if (menu === "home") {
-      transitionTo(renderHome);
-    } else if (menu === "script") {
-      transitionTo(() => renderCategoryList(scriptData));
-    } else if (menu === "executor") {
-      transitionTo(() => renderCategoryList(executorData));
-    } else if (menu === "discord") {
-      window.open("https://discord.gg/Yyn9FQJbhx", "_blank");
-    }
-  }
-
-  document.querySelectorAll(".menu-item").forEach(btn => {
-    btn.addEventListener("click", () => navigateTo(btn.getAttribute("data-menu")));
-  });
-
-  const navbar = document.querySelector(".navbar");
-  navbar?.addEventListener("mousemove", (e) => {
-    const x = (e.clientX / navbar.clientWidth) * 100;
-    const y = (e.clientY / navbar.clientHeight) * 100;
-    navbar.style.setProperty("--x", `${x}%`);
-    navbar.style.setProperty("--y", `${y}%`);
-  });
-
-  window.renderDetailFromCategory = renderDetailFromCategory;
-  window.openLinkWithTimer = openLinkWithTimer;
-  navigateTo("home");
-</script>
-</body>
-</html>
+      // Ripple effect
+      const ripple = document.createElement('span');
+      ripple.style.position = 'absolute';
+      ripple.style.width = '8px';
+      ripple.style.height = '8px';
+      ripple.style.background = 'rgba(140,170,255,0.5)';
+      ripple.style.borderRadius = '50%';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+      ripple.style.transition = 'transform 0.4s ease, opacity 0.5s';
+      ripple.style.opacity = '1';
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rec
